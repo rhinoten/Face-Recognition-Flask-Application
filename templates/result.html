@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .result-container {
+            text-align: center;
+        }
+
+        .result-container p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .result-container a {
+            background-color: #6200ea;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .result-container a:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Find Image Result</h1>
+        <div class="result-container">
+            <h2>Uploaded Image</h2>
+            <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
+
+            {% if result_image %}
+                <h2>Matched Image</h2>
+                <p>{{ result_image }}</p>
+            {% else %}
+                <p>No match found.</p>
+            {% endif %}
+
+            <a href="{{ url_for('index') }}">Go Back</a>
+        </div>
+    </div>
+</body>
+</html>
